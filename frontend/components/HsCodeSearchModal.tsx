@@ -33,7 +33,7 @@ export default function HsCodeSearchModal({ isOpen, onOpenChange, onSelect }: Pr
     setResult(null);
     
     try {
-      const res = await fetch(`/api/hscode?hs=${encodeURIComponent(hsCode.trim())}&page=${p}`);
+      const res = await fetch(`/cbam-data/hscode?hs=${encodeURIComponent(hsCode.trim())}&page=${p}`);
       if (!res.ok) {
         throw new Error('서버 오류가 발생했습니다.');
       }

@@ -35,7 +35,7 @@ export default function CompanyInfoPage() {
       }
 
       try {
-        const response = await fetch(`/api/user/${userId}`)
+        const response = await fetch(`/report-auth/user/${userId}/`)
         const data = await response.json()
 
         if (!response.ok) {

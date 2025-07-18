@@ -174,7 +174,7 @@ export default function RegisterPage() {
       return;
     }
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('/report-auth/auth/register/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
@@ -196,7 +196,7 @@ export default function RegisterPage() {
     setIdCheckLoading(true)
     setIdCheckResult(null)
     try {
-      const response = await fetch("/api/auth/check-id", {
+      const response = await fetch("/report-auth/auth/check-id/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: idCheckInput })

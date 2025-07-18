@@ -25,7 +25,7 @@ export default function FuelSearchModal({ isOpen, onOpenChange, onSelect }: Prop
   const fetchFuels = async (searchTerm: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/fuels${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
+      const response = await fetch(`/cbam-data/fuels${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
       if (!response.ok) throw new Error('데이터를 가져오는데 실패했습니다');
       const data = await response.json();
       setFuels(data.fuels || []);

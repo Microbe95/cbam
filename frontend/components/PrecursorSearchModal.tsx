@@ -51,7 +51,7 @@ export default function PrecursorSearchModal({ isOpen, onOpenChange, onSelect }:
   // material DB에서 품목명 리스트 fetch
   const fetchMaterialNames = async (searchTerm: string) => {
     try {
-      const response = await fetch(`/api/materials${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
+      const response = await fetch(`/cbam-data/materials${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
       if (!response.ok) throw new Error('원료 데이터를 가져오는데 실패했습니다');
       const data = await response.json();
       setMaterialNames((data.materials || []).map((m: any) => m.품목));
@@ -65,7 +65,7 @@ export default function PrecursorSearchModal({ isOpen, onOpenChange, onSelect }:
     setLoading(true);
     setError("");
     try {
-      const response = await fetch(`/api/precursors${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`, {
+      const response = await fetch(`/cbam-data/precursors${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`, {
         cache: 'no-cache',
       });
       if (!response.ok) {

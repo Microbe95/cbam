@@ -123,7 +123,7 @@ useEffect(() => {
   }
   const pdfBase64 = await blobToBase64(pdfBlob);
 
-  const res = await fetch('/api/report', {
+  const res = await fetch('/report-auth/report/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ filename, pdfBase64 }),
@@ -286,7 +286,7 @@ useEffect(() => {
 }, [activeTab, precursorList]);
   const fetchUserData = async () => {
     try {
-      const response = await fetch('/api/user/info', {
+      const response = await fetch('/report-auth/user/info/', {
         credentials: 'include'
       })
       const data = await response.json()
@@ -326,7 +326,7 @@ useEffect(() => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('/api/user/update', {
+      const response = await fetch('/report-auth/user/update/', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -387,7 +387,7 @@ useEffect(() => {
 
   const fetchPrecursorsFromDB = async () => {
     try {
-      const res = await fetch('/api/my-precursors');
+      const res = await fetch('/cbam-data/my-precursors');
       if (!res.ok) throw new Error('DB 조회 오류');
       const data = await res.json();
       setPrecursorList(
@@ -432,7 +432,7 @@ useEffect(() => {
     if (!precursorId) return;
     if (confirm('정말로 이 전구물질 정보를 삭제하시겠습니까?')) {
       try {
-        const res = await fetch(`/api/my-precursors?id=${precursorId}`, { method: 'DELETE' });
+        const res = await fetch(`/cbam-data/my-precursors?id=${precursorId}`, { method: 'DELETE' });
         if (!res.ok) throw new Error('DB 삭제 오류');
         await fetchPrecursorsFromDB();
       } catch (e) {

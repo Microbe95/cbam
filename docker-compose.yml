@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: cbam-gateway
+
+  account-service:
+    build:
+      context: ./service/account-service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8080"
+    container_name: cbam-account-service
+
+  cbam-calc-service:
+    build:
+      context: ./service/cbam-calc-service/app
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8080"
+    container_name: cbam-calc-service
+
+  cbam-data-service:
+    build:
+      context: ./service/cbam-data-service/app
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8080"
+    container_name: cbam-data-service
+
+  cbam-settings-service:
+    build:
+      context: ./service/cbam-settings-service/app
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8080"
+    container_name: cbam-settings-service
+
+  chatbot-service:
+    build:
+      context: ./service/chatbot-service/app
+      dockerfile: Dockerfile
+    ports:
+      - "8005:8080"
+    container_name: cbam-chatbot-service
+
+  report-auth-service:
+    build:
+      context: ./service/report-auth-service/app
+      dockerfile: Dockerfile
+    ports:
+      - "8006:8080"
+    container_name: cbam-report-auth-service

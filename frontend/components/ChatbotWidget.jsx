@@ -102,7 +102,7 @@ const animateWelcomeMessage = async () => {
   const placeholderIndex = messages.length + 1; // bot 메시지 인덱스
 
   try {
-    const res = await fetch("/api/chatbot", {
+    const res = await fetch("/chatbot/generate/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt: question }),

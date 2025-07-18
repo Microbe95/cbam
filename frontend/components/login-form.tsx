@@ -23,7 +23,7 @@ export default function LoginForm() {
     const password = formData.get("password")
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/report-auth/auth/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, password }),

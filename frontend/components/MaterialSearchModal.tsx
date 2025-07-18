@@ -27,7 +27,7 @@ export default function MaterialSearchModal({ isOpen, onOpenChange, onSelect }: 
   const fetchMaterials = async (searchTerm: string) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/materials${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
+      const response = await fetch(`/cbam-data/materials${searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : ''}`);
       if (!response.ok) throw new Error('데이터를 가져오는데 실패했습니다');
       const data = await response.json();
       setMaterials(data.materials || []);

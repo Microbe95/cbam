@@ -33,11 +33,11 @@ const CarbonCostModal: React.FC<CarbonCostModalProps> = ({
   const [tooltipTitle, setTooltipTitle] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/settings/kets').then(res => res.json()).then(data => setKetsPrice(data.yearlyAverage));
+    fetch('/cbam-settings/kets').then(res => res.json()).then(data => setKetsPrice(data.yearlyAverage));
   }, []);
 
   const calculateClimateCharge = async () => {
-    const res = await fetch('/api/settings/tax-e');
+    const res = await fetch('/cbam-settings/tax-e');
     const data = await res.json();
     setClimateCharge(electricityUsage * data.total);
   };
@@ -45,7 +45,7 @@ const CarbonCostModal: React.FC<CarbonCostModalProps> = ({
   const calculateTransportTax = async () => {
     const now = new Date();
     const id = now <= new Date('2025-06-30') ? "682d95c426e21740f1ce846c" : "682d95c426e21740f1ce846d";
-    const res = await fetch(`/api/settings/tax-t/${id}`);
+    const res = await fetch(`/cbam-settings/tax-t/${id}`);
     const data = await res.json();
     let tax = 0;
     fuelsData.forEach(f => {
